@@ -10,7 +10,7 @@ var redButton = {
     background: 'red'
 }
 
-window.styles = {
+exports.styles = {
     '.button': {
         extend: redButton, // can be an array of styles
         'font-size': '20px'
