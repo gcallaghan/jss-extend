@@ -1,6 +1,13 @@
 'use strict'
 
-QUnit.module('Extend plugin')
+QUnit.module('Extend plugin', {
+    setup: function () {
+        jss.use(jssExtend)
+    },
+    teardown: function () {
+        jss.plugins.registry = []
+    }
+})
 
 test('simple extend', function () {
     var a = {float: 'left'}
