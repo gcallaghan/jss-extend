@@ -1,4 +1,4 @@
 // Application
 jss.use(jssExtend)
-jss.createStylesheet(window.styles).attach()
+jss.createStyleSheet(window.styles).attach()
 

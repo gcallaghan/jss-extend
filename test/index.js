@@ -11,7 +11,7 @@ QUnit.module('Extend plugin', {
 
 test('simple extend', function () {
     var a = {float: 'left'}
-    var ss = new jss.Stylesheet({
+    var ss = new jss.StyleSheet({
         a: a,
         b: {
             extend: a,
@@ -26,7 +26,7 @@ test('simple extend', function () {
 test('multi extend', function () {
     var a = {float: 'left'}
     var b = {position: 'absolute'}
-    var ss = new jss.Stylesheet({
+    var ss = new jss.StyleSheet({
         c: {
             extend: [a, b],
             width: '1px'
@@ -39,7 +39,7 @@ test('multi extend', function () {
 test('nested extend', function () {
     var c = {float: 'left'}
     var b = {extend: c, display: 'none'}
-    var ss = new jss.Stylesheet({
+    var ss = new jss.StyleSheet({
         a: {
             extend: b,
             width: '1px'
