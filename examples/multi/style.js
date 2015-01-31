@@ -1,21 +1,20 @@
 (function() {
 
-var styles = window.styles = {}
-
-var button1 = {
+var button0 = {
     padding: '20px',
     background: 'blue'
 }
-
-styles['.button-1'] = button1
 
 var redButton = {
     background: 'red'
 }
 
-styles['.button-2'] = {
-    extend: [button1, redButton],
-    'font-size': '20px'
+window.styles = {
+    button0: button0,
+    button1: {
+        extend: [button0, redButton],
+        'font-size': '20px'
+    }
 }
 
 }())

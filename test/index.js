@@ -17,7 +17,7 @@ test('simple extend', function () {
             extend: a,
             width: '1px'
         }
-    })
+    }, {named: false})
     ok(ss.rules.a instanceof jss.Rule)
     ok(ss.rules.b instanceof jss.Rule)
     equal(ss.toString(), 'a {\n  float: left;\n}\nb {\n  float: left;\n  width: 1px;\n}')
@@ -31,7 +31,7 @@ test('multi extend', function () {
             extend: [a, b],
             width: '1px'
         }
-    })
+    }, {named: false})
     ok(ss.rules.c instanceof jss.Rule)
     equal(ss.toString(), 'c {\n  float: left;\n  position: absolute;\n  width: 1px;\n}')
 })
@@ -44,7 +44,7 @@ test('nested extend', function () {
             extend: b,
             width: '1px'
         }
-    })
+    }, {named: false})
     ok(ss.rules.a instanceof jss.Rule)
     equal(ss.toString(), 'a {\n  float: left;\n  display: none;\n  width: 1px;\n}')
 })
