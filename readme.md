@@ -1,6 +1,22 @@
 ## Inheritance plugin for JSS
 
-This plugin implements `extend` keyword for [jss](https://github.com/jsstyles/jss).
+For those who uses an ES6 transpiler - you can achieve the same by using the language itself.
+
+```javascript
+var redButton = {
+    background: 'red'
+}
+
+export default {
+    button: {
+        ...redButton,
+        'font-size': '20px'
+    }
+}
+```
+
+
+This plugin implements `extend` property for [jss](https://github.com/jsstyles/jss).
 
 Take a look at [examples](http://jsstyles.github.io/jss-extend/examples/index.html) directory.
 
@@ -11,7 +27,7 @@ var redButton = {
 }
 
 exports.styles = {
-    '.button': {
+    button: {
         extend: redButton, // can be an array of styles
         'font-size': '20px'
     }
