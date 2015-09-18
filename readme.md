@@ -46,7 +46,7 @@ const styleSheet = jss.createStyleSheet({
 const styleSheet = jss.createStyleSheet({
   container: Object.assign({}, redContainer, {
     'font-size': '20px'
-  }
+  })
 })
 
 // Or with a helper
