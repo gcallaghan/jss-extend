@@ -16,13 +16,13 @@ This plugin implements a custom `extend` style property.
 import jss from 'jss'
 import extend from 'jss-extend'
 
-jss.use(extend)
+jss.use(extend())
 
 const redContainer = {
   background: 'red'
 }
 
-const styleSheet = jss.createStyleSheet({
+let sheet = jss.createStyleSheet({
   container: {
     extend: redContainer, // Can be an array of styles
     'font-size': '20px'
@@ -35,7 +35,7 @@ const styleSheet = jss.createStyleSheet({
  */
 
 // ES7
-const styleSheet = jss.createStyleSheet({
+let sheet = jss.createStyleSheet({
   container: {
     ...redContainer,
     'font-size': '20px'
@@ -43,24 +43,15 @@ const styleSheet = jss.createStyleSheet({
 })
 
 // ES6
-const styleSheet = jss.createStyleSheet({
+let sheet = jss.createStyleSheet({
   container: Object.assign({}, redContainer, {
-    'font-size': '20px'
-  })
-})
-
-// Or with a helper
-import xtend from 'xtend' // Does not mutate arguments
-
-const styleSheet = jss.createStyleSheet({
-  container: xtend(redContainer, {
     'font-size': '20px'
   })
 })
 ```
 
 ```javascript
-console.log(styleSheet.toString())
+console.log(sheet.toString())
 ```
 ```css
 .jss-0-0 {
@@ -70,12 +61,11 @@ console.log(styleSheet.toString())
 ```
 
 ```javascript
-console.log(styleSheet.classes)
+console.log(sheet.classes)
 ```
 ```javascript
-{ container: "jss-0-0" }
+{ container: 'jss-0-0" }
 ```
-
 
 ## Run tests
 
@@ -83,7 +73,6 @@ console.log(styleSheet.classes)
 npm i
 npm run test
 ```
-
 
 ## License
 

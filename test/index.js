@@ -2,7 +2,7 @@
 
 QUnit.module('Extend plugin', {
   setup: function () {
-    jss.use(jssExtend)
+    jss.use(jssExtend())
   },
   teardown: function () {
     jss.plugins.registry = []
@@ -18,8 +18,8 @@ test('simple extend', function () {
       width: '1px'
     }
   }, {named: false})
-  ok(ss.rules.a instanceof jss.Rule)
-  ok(ss.rules.b instanceof jss.Rule)
+  ok(ss.rules.a)
+  ok(ss.rules.b)
   equal(ss.toString(), 'a {\n  float: left;\n}\nb {\n  float: left;\n  width: 1px;\n}')
 })
 
@@ -32,7 +32,7 @@ test('multi extend', function () {
       width: '1px'
     }
   }, {named: false})
-  ok(ss.rules.c instanceof jss.Rule)
+  ok(ss.rules.c)
   equal(ss.toString(), 'c {\n  float: left;\n  position: absolute;\n  width: 1px;\n}')
 })
 
@@ -45,6 +45,6 @@ test('nested extend', function () {
       width: '1px'
     }
   }, {named: false})
-  ok(ss.rules.a instanceof jss.Rule)
+  ok(ss.rules.a)
   equal(ss.toString(), 'a {\n  float: left;\n  display: none;\n  width: 1px;\n}')
 })
