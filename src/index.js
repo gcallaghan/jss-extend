@@ -9,20 +9,26 @@ export default function jssExtend() {
     if (!rule.style || !rule.style.extend) return
 
     function extend(newStyle, style) {
-      if (Array.isArray(style.extend)) {
-        for (let i = 0; i < style.extend.length; i++) {
-          extend(newStyle, style.extend[i])
+      if (typeof style.extend == 'string') {
+        if (rule.options && rule.options.sheet) {
+          const refRule = rule.options.sheet.getRule(style.extend)
+          if (refRule) extend(newStyle, refRule.originalStyle)
+        }
+      }
+      else if (Array.isArray(style.extend)) {
+        for (let index = 0; index < style.extend.length; index++) {
+          extend(newStyle, style.extend[index])
         }
       }
       else {
-        for (let prop in style.extend) {
+        for (const prop in style.extend) {
           if (prop === 'extend') extend(newStyle, style.extend.extend)
           else newStyle[prop] = style.extend[prop]
         }
       }
 
       // Copy base style.
-      for (let prop in style) {
+      for (const prop in style) {
         if (prop !== 'extend') newStyle[prop] = style[prop]
       }
 

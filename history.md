@@ -1,3 +1,7 @@
+## 1.1.0 / 2015-11-14
+
+- allow extend value to be a name of a rule from the style sheet
+
 ## 1.0.0 / 2015-10-19
 
 - support jss 3.0

@@ -48,3 +48,16 @@ test('nested extend', function () {
   ok(ss.rules.a)
   equal(ss.toString(), 'a {\n  float: left;\n  display: none;\n  width: 1px;\n}')
 })
+
+test('extend using rule name', function () {
+  var ss = jss.createStyleSheet({
+    a: {float: 'left'},
+    b: {
+      extend: 'a',
+      width: '1px'
+    }
+  }, {named: false})
+  ok(ss.rules.a)
+  ok(ss.rules.b)
+  equal(ss.toString(), 'a {\n  float: left;\n}\nb {\n  float: left;\n  width: 1px;\n}')
+})
