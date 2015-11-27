@@ -9,50 +9,49 @@ This plugin implements a custom `extend` style property.
 
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/jsstyles/jss?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+Value of `extend` property can be a string, object and array. If string is used, it will look for a rule with such a name. If object - plain rule object is expected, if array - an array of plain rule obejcts is expected.
 
-## Usage example
+
+## Usage examples
 
 ```javascript
 import jss from 'jss'
 import extend from 'jss-extend'
 
+// Setup jss plugins.
 jss.use(extend())
+
+const sheet = jss.createStyleSheet({
+  redContainer: {
+    background: 'red'
+  },
+  container: {
+    extend: 'redContainer',
+    'font-size': '20px'
+  }
+})
 
 const redContainer = {
   background: 'red'
 }
-
-let sheet = jss.createStyleSheet({
+const sheet = jss.createStyleSheet({
   container: {
     extend: redContainer, // Can be an array of styles
     'font-size': '20px'
   }
 })
 
-/**
- * For those who use an ES6 transpiler - you can achieve the same
- * by using the language itself.
- */
-
-// ES7
-let sheet = jss.createStyleSheet({
+// Without `extend`, using ES7.
+const sheet = jss.createStyleSheet({
   container: {
     ...redContainer,
     'font-size': '20px'
   }
 })
 
-// ES6
-let sheet = jss.createStyleSheet({
-  container: Object.assign({}, redContainer, {
-    'font-size': '20px'
-  })
-})
-```
-
-```javascript
 console.log(sheet.toString())
 ```
+
 ```css
 .jss-0-0 {
   background: red;
@@ -64,7 +63,7 @@ console.log(sheet.toString())
 console.log(sheet.classes)
 ```
 ```javascript
-{ container: 'jss-0-0" }
+{container: 'jss-0-0'}
 ```
 
 ## Run tests
