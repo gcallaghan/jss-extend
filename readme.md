@@ -66,6 +66,10 @@ console.log(sheet.classes)
 {container: 'jss-0-0'}
 ```
 
+## Issues
+
+File a bug against [jsstyles/jss prefixed with \[jss-extend\]](https://github.com/isaacs/github/issues/new?title=[jss-extend]%20).
+
 ## Run tests
 
 ```bash
