@@ -68,7 +68,7 @@ console.log(sheet.classes)
 
 ## Issues
 
-File a bug against [jsstyles/jss prefixed with \[jss-extend\]](https://github.com/jsstyles/jss-extend/issues/new?title=[jss-extend]%20).
+File a bug against [jsstyles/jss prefixed with \[jss-extend\]](https://github.com/jsstyles/jss/issues/new?title=[jss-extend]%20).
 
 ## Run tests
 
