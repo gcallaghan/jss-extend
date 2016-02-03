@@ -5,36 +5,35 @@
  * @api public
  */
 export default function jssExtend() {
-  return rule => {
-    if (!rule.style || !rule.style.extend) return
-
-    function extend(newStyle, style) {
-      if (typeof style.extend == 'string') {
-        if (rule.options && rule.options.sheet) {
-          const refRule = rule.options.sheet.getRule(style.extend)
-          if (refRule) extend(newStyle, refRule.originalStyle)
-        }
+  function extend(rule, newStyle, style) {
+    if (typeof style.extend == 'string') {
+      if (rule.options && rule.options.sheet) {
+        const refRule = rule.options.sheet.getRule(style.extend)
+        if (refRule) extend(rule, newStyle, refRule.originalStyle)
       }
-      else if (Array.isArray(style.extend)) {
-        for (let index = 0; index < style.extend.length; index++) {
-          extend(newStyle, style.extend[index])
-        }
+    }
+    else if (Array.isArray(style.extend)) {
+      for (let index = 0; index < style.extend.length; index++) {
+        extend(rule, newStyle, style.extend[index])
       }
-      else {
-        for (const prop in style.extend) {
-          if (prop === 'extend') extend(newStyle, style.extend.extend)
-          else newStyle[prop] = style.extend[prop]
-        }
+    }
+    else {
+      for (const prop in style.extend) {
+        if (prop === 'extend') extend(rule, newStyle, style.extend.extend)
+        else newStyle[prop] = style.extend[prop]
       }
-
-      // Copy base style.
-      for (const prop in style) {
-        if (prop !== 'extend') newStyle[prop] = style[prop]
-      }
-
-      return newStyle
     }
 
-    rule.style = extend({}, rule.style)
+    // Copy base style.
+    for (const prop in style) {
+      if (prop !== 'extend') newStyle[prop] = style[prop]
+    }
+
+    return newStyle
+  }
+
+  return rule => {
+    if (!rule.style || !rule.style.extend) return
+    rule.style = extend(rule, {}, rule.style)
   }
 }

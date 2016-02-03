@@ -1,3 +1,7 @@
+## 1.2.0 / 2016-02-03
+
+- perf enhancement, don't generate a function upon each plugin call
+
 ## 1.1.0 / 2015-11-14
 
 - allow extend value to be a name of a rule from the style sheet
